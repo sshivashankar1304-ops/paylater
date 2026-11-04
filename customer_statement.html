@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Pay Later Travel - Customer Statement</title>
+  <title>EUR statement - 4 November 2026</title>
   <style>
     @page {
       size: A4;
-      margin: 20mm;
+      margin: 15mm 16mm;
     }
 
     * {
@@ -18,35 +18,48 @@
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       color: #000000;
-      background: #ffffff;
-      padding: 40px;
-      line-height: 1.45;
+      background: #f8fafc;
+      padding: 40px 20px;
+      line-height: 1.4;
+      -webkit-font-smoothing: antialiased;
     }
 
-    .container {
-      max-width: 720px;
+    .page-sheet {
+      max-width: 790px;
       margin: 0 auto;
+      background: #ffffff;
+      padding: 48px 52px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      border-radius: 4px;
+      position: relative;
+      min-height: 1040px;
+      display: flex;
+      flex-direction: column;
     }
 
     /* Print Controls */
     .no-print {
-      margin-bottom: 24px;
+      max-width: 790px;
+      margin: 0 auto 20px auto;
       display: flex;
-      justify-content: flex-end;
-      gap: 12px;
+      justify-content: space-between;
+      align-items: center;
     }
 
     .btn {
       font-family: inherit;
       font-size: 13px;
       font-weight: 600;
-      padding: 8px 18px;
+      padding: 9px 18px;
       border-radius: 6px;
       border: 1px solid #d1d5db;
       background: #ffffff;
       color: #111827;
       cursor: pointer;
       text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
 
     .btn-primary {
@@ -55,144 +68,173 @@
       border-color: #1156f9;
     }
 
-    /* Header */
-    h1 {
+    /* Document Structure */
+    .title-h1 {
       font-size: 26px;
       font-weight: 800;
-      letter-spacing: -0.5px;
-      margin-bottom: 16px;
+      letter-spacing: -0.4px;
+      color: #000000;
+      margin-bottom: 14px;
     }
 
-    .statement-period {
-      font-size: 13px;
+    .period-line {
+      font-size: 13.5px;
       font-weight: 700;
+      color: #000000;
       margin-bottom: 4px;
     }
 
-    .generated-date {
+    .generated-line {
       font-size: 11px;
       color: #6b7280;
-      margin-bottom: 30px;
+      margin-bottom: 26px;
     }
 
-    /* Meta Columns */
-    .meta-grid {
-      display: grid;
-      grid-template-columns: 1.6fr 1fr 1fr;
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-
-    .meta-label {
-      font-size: 11px;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-
-    .meta-value {
-      font-size: 11.5px;
-      color: #111827;
-      line-height: 1.5;
-    }
-
-    hr {
+    .divider-hairline {
+      height: 1px;
+      background-color: #e5e7eb;
       border: none;
-      border-top: 1px solid #e5e7eb;
-      margin: 20px 0;
+      margin: 0 0 20px 0;
     }
 
-    /* Balance Row */
-    .balance-header-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      font-size: 14px;
+    /* Metadata 3-column Grid */
+    .meta-row {
+      display: grid;
+      grid-template-columns: 2.1fr 1fr 1fr;
+      margin-bottom: 22px;
+    }
+
+    .meta-col-title {
+      font-size: 11.5px;
       font-weight: 700;
+      color: #000000;
       margin-bottom: 8px;
     }
 
-    /* Table */
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 40px;
+    .meta-col-body {
+      font-size: 11px;
+      color: #000000;
+      line-height: 1.48;
     }
 
-    th {
+    /* Balance Row */
+    .balance-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 14.5px;
+      font-weight: 700;
+      color: #000000;
+      margin-bottom: 10px;
+    }
+
+    .divider-solid {
+      height: 1px;
+      background-color: #9ca3af;
+      border: none;
+      margin-bottom: 10px;
+    }
+
+    /* Transactions Table */
+    .tx-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 45px;
+    }
+
+    .tx-table th {
       font-size: 11px;
       font-weight: 400;
       color: #6b7280;
       text-align: left;
-      padding: 8px 0;
-      border-bottom: 1px solid #e5e7eb;
+      padding: 6px 0 10px 0;
     }
 
-    th.right, td.right {
-      text-align: right;
-    }
-
-    td {
-      font-size: 11.5px;
-      padding: 12px 0;
+    .tx-table td {
+      font-size: 11px;
+      color: #000000;
+      padding: 12px 0 6px 0;
       vertical-align: top;
     }
 
-    .desc-main {
-      font-weight: 600;
+    .right {
+      text-align: right;
+    }
+
+    .desc-title {
+      font-weight: 400;
+      color: #000000;
     }
 
     .desc-sub {
       font-size: 10px;
       color: #6b7280;
-      margin-top: 2px;
+      margin-top: 4px;
     }
 
-    /* Footer Legal */
-    .statement-footer-legal {
+    /* Legal Disclaimers */
+    .disclaimer-block {
       font-size: 9.5px;
       color: #6b7280;
-      line-height: 1.5;
-      margin-top: 60px;
-      padding-top: 20px;
+      line-height: 1.55;
+      margin-top: 20px;
     }
 
-    .page-footer {
+    .disclaimer-block p {
+      margin-bottom: 8px;
+    }
+
+    /* Pinned Footer */
+    .sheet-footer {
+      margin-top: auto;
+      padding-top: 40px;
       display: flex;
       justify-content: space-between;
-      font-size: 9px;
+      font-size: 8.5px;
       color: #9ca3af;
-      margin-top: 160px;
     }
 
     @media print {
       body {
+        background: #ffffff;
         padding: 0;
       }
       .no-print {
         display: none !important;
+      }
+      .page-sheet {
+        box-shadow: none;
+        padding: 0;
+        max-width: 100%;
+        min-height: 0;
       }
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-
-    <div class="no-print">
-      <button class="btn btn-primary" onclick="window.print()">Print / Save as PDF</button>
-      <a href="index.html" class="btn">← Back to Site</a>
+  <div class="no-print">
+    <a href="index.html" class="btn">← Back to Pay Later Travel</a>
+    <div style="display: flex; gap: 10px;">
+      <a href="PayLater_Travel_Statement_Exact.pdf" download class="btn">Download Exact PDF</a>
+      <button class="btn btn-primary" onclick="window.print()">Print Statement</button>
     </div>
+  </div>
 
-    <h1>Pay Later Travel Statement</h1>
+  <div class="page-sheet">
 
-    <div class="statement-period">3 November 2026 [GMT] - 4 November 2026 [GMT]</div>
-    <div class="generated-date">Generated on: 4 November 2026</div>
+    <div class="title-h1">EUR statement</div>
 
-    <div class="meta-grid">
+    <div class="period-line">4 November 2026 [GMT] - 4 November 2026 [GMT]</div>
+    <div class="generated-line">Generated on: 4 November 2026 at 09:23</div>
+
+    <hr class="divider-hairline">
+
+    <div class="meta-row">
       <div>
-        <div class="meta-label">Account Holder</div>
-        <div class="meta-value">
-          <strong>Maria Inês Cardoso da Silva</strong><br>
+        <div class="meta-col-title">Account Holder</div>
+        <div class="meta-col-body">
+          Maria Inês Cardoso da Silva<br>
           Urbanização Quinta do Morgadinho N8<br>
           Quarteira<br>
           8125-307<br>
@@ -200,53 +242,54 @@
         </div>
       </div>
       <div>
-        <div class="meta-label">Customer ID</div>
-        <div class="meta-value">PLT-849059</div>
+        <div class="meta-col-title">IBAN</div>
+        <div class="meta-col-body">BE84 9059 2713 1259</div>
       </div>
       <div>
-        <div class="meta-label">Account Reference</div>
-        <div class="meta-value">PLT-REC-202611</div>
+        <div class="meta-col-title">Swift/BIC</div>
+        <div class="meta-col-body">TRWIBEB1XXX</div>
       </div>
     </div>
 
-    <hr>
+    <hr class="divider-hairline">
 
-    <div class="balance-header-row">
+    <div class="balance-header">
       <div>EUR on 4 November 2026 [GMT]</div>
       <div>154.57 EUR</div>
     </div>
 
-    <table>
+    <div class="divider-solid"></div>
+
+    <table class="tx-table">
       <thead>
         <tr>
-          <th style="width: 55%;">Description</th>
-          <th class="right" style="width: 15%;">Incoming</th>
-          <th class="right" style="width: 15%;">Outgoing</th>
-          <th class="right" style="width: 15%;">Amount</th>
+          <th style="width: 58%;">Description</th>
+          <th class="right" style="width: 14%;">Incoming</th>
+          <th class="right" style="width: 14%;">Outgoing</th>
+          <th class="right" style="width: 14%;">Amount</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td>
-            <div class="desc-main">Flight layaway installment payment received with reference</div>
-            <div class="desc-sub">04 November 2026 | Transaction: PLT-TRANSFER-2473009189</div>
+            <div class="desc-title">Flight payment from Maria Inês Cardoso da Silva with reference</div>
+            <div class="desc-sub">4 November 2026 at 09:23 | Transaction: TRANSFER-2473009189</div>
           </td>
           <td class="right">154.57</td>
           <td class="right"></td>
-          <td class="right"><strong>154.57</strong></td>
+          <td class="right">154.57</td>
         </tr>
       </tbody>
     </table>
 
-    <div class="statement-footer-legal">
-      Pay Later Travel Pty Ltd is an online travel reservation and layaway service provider. 
-      All flight bookings and scheduled installments are governed by the Pay Later Travel booking agreement. 
-      Payments are held toward confirmed airline ticket issuance upon completion of scheduled layaway plans.<br><br>
-      Need help? Contact support at <strong>paylatertravelhelp@gmail.com</strong> or visit <strong>www.paylatertravel.com</strong>
+    <div class="disclaimer-block">
+      <p>Pay Later Travel is the trading name of Pay Later Travel Pty Ltd, an accredited travel reservation service.</p>
+      <p>All flight tickets and scheduled payment installments are subject to Pay Later Travel terms and conditions.</p>
+      <p>Need help? Visit paylatertravel.com or contact support at paylatertravelhelp@gmail.com</p>
     </div>
 
-    <div class="page-footer">
-      <div>ref:plt-84905927131259-20261104</div>
+    <div class="sheet-footer">
+      <div>ref:86998590-148b-4510-a7d2-5eb27f5fecf4</div>
       <div>1 / 1</div>
     </div>
 
