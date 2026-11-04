@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pay Later Travel | Book Now, Pay Later Flights</title>
+  <meta name="description" content="Book Flights Now, Pay Later. Lock in today's price & pay in up to 18 weekly payments. No interest, no credit checks & no hidden fees. Check your eligibility in seconds.">
+  <link rel="icon" type="image/svg+xml" href="assets/logo_stacked.svg">
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       TOP ANNOUNCEMENT & CURRENCY BAR
+       ========================================================================== -->
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="top-bar-message">
+        <span class="top-bar-badge">0% Interest</span>
+        <span>Lock in today's flight price with a small deposit. No credit checks required.</span>
+      </div>
+      <div class="top-bar-right">
+        <!-- Currency Picker -->
+        <div class="currency-picker-wrapper">
+          <button class="currency-btn" id="currencyPickerBtn" aria-label="Select Currency">
+            <span id="activeCurrencyCode">$USD</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="currency-dropdown" id="currencyDropdown">
+            <div class="currency-item selected" data-currency="USD">🇺🇸 United States $USD</div>
+            <div class="currency-item" data-currency="AUD">🇦🇺 Australia $AUD</div>
+            <div class="currency-item" data-currency="GBP">🇬🇧 United Kingdom £GBP</div>
+            <div class="currency-item" data-currency="CAD">🇨🇦 Canada $CAD</div>
+            <div class="currency-item" data-currency="NZD">🇳🇿 New Zealand $NZD</div>
+          </div>
+        </div>
+        <!-- Support Phone / Email link -->
+        <a href="#support" class="currency-btn" style="display:none; @media(min-width:768px){display:flex;}">
+          <span>support@paylatertravel.com</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MAIN NAVIGATION
+       ========================================================================== -->
+  <header class="navbar" id="mainNavbar">
+    <div class="container nav-wrapper">
+      <!-- Brand Logo -->
+      <a href="index.html" class="nav-brand" aria-label="Pay Later Travel Home">
+        <img src="assets/logo_inline.svg" alt="Pay Later Travel Logo" class="nav-brand-img">
+      </a>
+
+      <!-- Desktop Nav Menu -->
+      <nav class="nav-menu">
+        <a href="#book" class="nav-link active">Flights</a>
+        <a href="#eligibility-checker" class="nav-link">
+          Check Eligibility
+          <span class="nav-badge-pill">Instant</span>
+        </a>
+        <a href="#how-it-works" class="nav-link">How It Works</a>
+        <a href="#destinations" class="nav-link">Destinations</a>
+        <a href="#testimonials" class="nav-link">Testimonials</a>
+        <a href="#faqs" class="nav-link">FAQs</a>
+      </nav>
+
+      <!-- Nav Actions -->
+      <div class="nav-actions">
+        <button class="nav-login-btn" onclick="openLoginPrompt()">Login</button>
+        <a href="#eligibility-checker" class="btn btn-secondary btn-sm btn-pill">
+          Check Eligibility
+        </a>
+        <!-- Mobile Hamburger Toggle -->
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Open mobile navigation menu">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div id="mobileNavDrawer" style="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(23,19,22,0.95);backdrop-filter:blur(10px);z-index:2500;display:none;flex-direction:column;padding:30px 24px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:40px;">
+      <img src="assets/logo_inline.svg" alt="Pay Later Travel" style="height:32px;filter:brightness(0) invert(1);">
+      <button id="closeMobileNav" style="color:#ffffff;font-size:2rem;background:none;border:none;">&times;</button>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:20px;font-size:1.35rem;font-weight:700;color:#ffffff;font-family:var(--font-heading);">
+      <a href="#book" class="mobile-nav-item">Flights</a>
+      <a href="#eligibility-checker" class="mobile-nav-item">Check Eligibility (Instant)</a>
+      <a href="#how-it-works" class="mobile-nav-item">How It Works</a>
+      <a href="#destinations" class="mobile-nav-item">Popular Destinations</a>
+      <a href="#comparison" class="mobile-nav-item">Why Not Credit Cards?</a>
+      <a href="#testimonials" class="mobile-nav-item">Customer Reviews</a>
+      <a href="#faqs" class="mobile-nav-item">Frequently Asked Questions</a>
+    </div>
+    <div style="margin-top:auto;display:flex;flex-direction:column;gap:12px;">
+      <a href="#eligibility-checker" class="btn btn-secondary btn-pill text-center">Check Eligibility Now</a>
+      <button class="btn btn-outline btn-pill" onclick="openLoginPrompt()">Account Login</button>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       HERO SECTION
+       ========================================================================== -->
+  <section class="hero-section" id="book">
+    <div class="hero-background-art"></div>
+    <div class="hero-stamps">
+      <img src="assets/takeoff.svg" alt="Flight Stamp" class="hero-stamp-img hero-stamp-1">
+      <img src="assets/globe.svg" alt="Globe Stamp" class="hero-stamp-img hero-stamp-2">
+      <img src="assets/luggage.svg" alt="Luggage Stamp" class="hero-stamp-img hero-stamp-3">
+    </div>
+
+    <div class="container" style="position:relative;z-index:2;">
+      <!-- Hero Headline -->
+      <div class="hero-header">
+        <h1>Book flights early,<br>pay flexibly</h1>
+        <p>We'll save your seat, while you save the rest.</p>
+        
+        <!-- Trustpilot Pill -->
+        <a href="#testimonials" class="hero-trustpilot-pill">
+          <img src="assets/trustpilot_stars.svg" alt="Trustpilot 4.7 Stars" class="trustpilot-stars-img">
+          <span class="trustpilot-text">6,379+ reviews on Trustpilot (4.7 ★★★★★)</span>
+        </a>
+      </div>
+
+      <!-- Hero Booking / Flight Search Widget -->
+      <div class="booking-widget-container">
+        <!-- Top Tabs inside Widget -->
+        <div class="widget-tabs">
+          <div class="trip-type-tabs">
+            <button class="trip-tab active" data-type="Round trip">Round Trip</button>
+            <button class="trip-tab" data-type="One way">One Way</button>
+            <button class="trip-tab" data-type="Multi-city">Multi-City</button>
+          </div>
+          <div class="widget-perks">
+            <div class="widget-perk-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>No Credit Checks</span>
+            </div>
+            <div class="widget-perk-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>0% Interest Always</span>
+            </div>
+            <div class="widget-perk-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Up to 18 Weekly Payments</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Search Form Fields -->
+        <div class="flight-form-grid">
+          <!-- Origin -->
+          <div class="form-field-box">
+            <label class="form-label">Leaving From</label>
+            <div class="form-input-row">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.3c.4-.2.6-.6.5-1.1z"/></svg>
+              <input type="text" class="form-input" id="searchOrigin" value="Los Angeles (LAX)" placeholder="City or airport">
+            </div>
+            <div class="airport-dropdown" id="originDropdown"></div>
+          </div>
+
+          <!-- Destination -->
+          <div class="form-field-box">
+            <label class="form-label">Going To</label>
+            <div class="form-input-row">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
+              <input type="text" class="form-input" id="searchDestination" value="Tokyo (NRT)" placeholder="City or airport">
+            </div>
+            <div class="airport-dropdown" id="destDropdown"></div>
+          </div>
+
+          <!-- Dates -->
+          <div class="form-field-box">
+            <label class="form-label">Departure & Return</label>
+            <div class="form-input-row" style="gap:4px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              <input type="date" class="form-input" id="searchDepartDate" style="font-size:0.825rem;width:48%;">
+              <span style="color:#94a3b8;font-size:0.75rem;">to</span>
+              <input type="date" class="form-input" id="searchReturnDate" style="font-size:0.825rem;width:48%;">
+            </div>
+          </div>
+
+          <!-- Travelers & Class -->
+          <div class="form-field-box">
+            <label class="form-label">Travelers</label>
+            <div class="form-input-row">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              <select class="form-input" id="searchPassengers" style="cursor:pointer;">
+                <option value="1">1 Adult, Economy</option>
+                <option value="2">2 Adults, Economy</option>
+                <option value="3">3+ Travelers, Economy</option>
+                <option value="business">1 Adult, Premium/Business</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Search Button -->
+          <button class="btn btn-primary" id="searchFlightsBtn" style="padding:16px 28px;height:100%;">
+            <span>Search Flights</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
+        </div>
+
+        <!-- Real-time Installment Calculator Bar -->
+        <div class="installment-calculator-bar">
+          <div class="calc-breakdown">
+            <div class="calc-item">
+              <span class="calc-label">Est. Total Flight</span>
+              <span class="calc-value" id="calcTotalPrice">$780</span>
+            </div>
+            <div style="color:#cbd5e1;font-size:1.2rem;">➔</div>
+            <div class="calc-item">
+              <span class="calc-label">Lock-In Deposit</span>
+              <span class="calc-value highlight" id="calcDepositPrice">$62</span>
+            </div>
+            <div style="color:#cbd5e1;font-size:1.2rem;">+</div>
+            <div class="calc-item">
+              <span class="calc-label">Pay Weekly (16 wks)</span>
+              <span class="calc-value" id="calcWeeklyPrice">$45 / wk</span>
+            </div>
+          </div>
+          <a href="#eligibility-checker" class="calc-cta-link">
+            <span>Check your eligibility in 60s without credit impact</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       PRESS & AS SEEN IN MARQUEE
+       ========================================================================== -->
+  <section class="press-section">
+    <div class="container">
+      <div class="press-title">Featured and trusted by global travel authorities</div>
+      <div class="press-logos-row">
+        <div class="press-logo-item">
+          <span>Nine Travel</span>
+        </div>
+        <div class="press-logo-item">
+          <span>The New York Times</span>
+        </div>
+        <div class="press-logo-item">
+          <span>THE WALL STREET JOURNAL.</span>
+        </div>
+        <div class="press-logo-item">
+          <span>NEWYORK POST</span>
+        </div>
+        <div class="press-logo-item">
+          <span>FINANCIAL REVIEW</span>
+        </div>
+        <div class="press-logo-item">
+          <span>BuzzFeed</span>
+        </div>
+        <div class="press-logo-item">
+          <span>LADBIBLE</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       PRIMARY REQUIREMENT: INTERACTIVE ELIGIBILITY CHECKER ENGINE
+       ========================================================================== -->
+  <section class="section-padding eligibility-section" id="eligibility-checker">
+    <div class="container eligibility-container">
+      <!-- Left Column: Explanation & Benefits -->
+      <div class="eligibility-info-content">
+        <span class="section-tag">Official Underwriting Assessment</span>
+        <h2>Check If You're Eligible For Pay Later Flights</h2>
+        <p class="section-subtitle">
+          Submit your identification, banking, and employment details below. Our underwriting review team will evaluate your application and notify you of the outcome via email.
+        </p>
+
+        <div class="eligibility-features-list">
+          <div class="eligibility-feature-item">
+            <div class="feature-check-icon">✓</div>
+            <div class="eligibility-feature-text">
+              <h4>Email Decision Notification</h4>
+              <p>You will shortly receive an official email whether you are eligible or not. If eligible, your pre-approval details will be sent directly to your inbox.</p>
+            </div>
+          </div>
+
+          <div class="eligibility-feature-item">
+            <div class="feature-check-icon">✓</div>
+            <div class="eligibility-feature-text">
+              <h4>Re-Apply Anytime If Not Approved</h4>
+              <p>If not approved today, please do not worry—you can always come back and re-apply once your financial circumstances or credit score increase.</p>
+            </div>
+          </div>
+
+          <div class="eligibility-feature-item">
+            <div class="feature-check-icon">✓</div>
+            <div class="eligibility-feature-text">
+              <h4>0% Interest & Downloadable Application Form</h4>
+              <p>Once submitted, you can instantly download a signed, detailed application summary PDF for your records.</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:28px;">
+          <a href="eligibility.html" class="btn btn-outline-dark btn-sm">
+            <span>Open Fullscreen Application Portal ↗</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Column: Interactive Multi-Step Form Card -->
+      <div class="eligibility-card" style="box-shadow: 0 24px 60px rgba(17,86,249,0.12); border-radius: 20px;">
+        <div class="eligibility-badge-top">Official Underwriting Inquiry</div>
+
+        <!-- Progress Header -->
+        <div class="form-progress-wrapper">
+          <div class="progress-steps-indicator">
+            <span class="step-indicator-item active" id="eligibilityStepLabel">Step 1 of 3: Identity & Contact</span>
+            <span style="font-size:0.75rem;color:var(--primary-commitment);font-weight:700;">Confidential & Encrypted</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" id="eligibilityProgressFill" style="width: 33.3%;"></div>
+          </div>
+        </div>
+
+        <!-- STEP 1: Personal & Identification Details -->
+        <div class="eligibility-step active" id="eligibilityStep1">
+          <div class="step-heading">1. Personal & Identification Details</div>
+          <div class="step-desc">Enter your legal personal details as they appear on your government documents.</div>
+
+          <div class="form-group-row">
+            <div class="form-group">
+              <label>Full Legal Name (as per Passport/ID) *</label>
+              <input type="text" class="form-control" id="eligibilityName" placeholder="e.g. Jessica Miller">
+            </div>
+            <div class="form-group">
+              <label>Passport Number or National ID *</label>
+              <input type="text" class="form-control" id="eligibilityPassport" placeholder="e.g. P98214029 or National ID">
+            </div>
+          </div>
+
+          <div class="form-group-row">
+            <div class="form-group">
+              <label>Date of Birth</label>
+              <input type="date" class="form-control" id="eligibilityDob">
+            </div>
+            <div class="form-group">
+              <label>Country of Legal Residence *</label>
+              <select class="form-control" id="eligibilityCountry">
+                <option value="United States" selected>United States</option>
+                <option value="Australia">Australia</option>
+                <option value="United Kingdom">United Kingdom</option>
+                <option value="Canada">Canada</option>
+                <option value="New Zealand">New Zealand</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group-row">
+            <div class="form-group">
+              <label>Email Address (For Notification) *</label>
+              <input type="email" class="form-control" id="eligibilityEmail" placeholder="jessica@example.com">
+            </div>
+            <div class="form-group">
+              <label>Mobile Phone Number *</label>
+              <input type="tel" class="form-control" id="eligibilityPhone" placeholder="+1 (555) 000-0000">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Full Residential Address</label>
+            <input type="text" class="form-control" id="eligibilityAddress" placeholder="Street Address, City, State/Province, Postal Code">
+          </div>
+
+          <div class="step-btn-group">
+            <span></span>
+            <button class="btn btn-primary" id="eligibilityNext1">
+              <span>Continue to Financial & Employment</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 2: Banking & Employment Information -->
+        <div class="eligibility-step" id="eligibilityStep2">
+          <div class="step-heading">2. Banking & Employment Details</div>
+          <div class="step-desc">Required for our underwriting review to verify your repayment capacity.</div>
+
+          <div class="form-group-row">
+            <div class="form-group">
+              <label>Primary Bank / Financial Institution *</label>
+              <input type="text" class="form-control" id="eligibilityBankName" placeholder="e.g. Chase, Bank of America, Commonwealth Bank">
+            </div>
+            <div class="form-group">
+              <label>Account Type Held *</label>
+              <select class="form-control" id="eligibilityAccountType">
+                <option value="Checking / Transaction">Checking / Everyday Account</option>
+                <option value="Savings">Savings Account</option>
+                <option value="Business">Business Account</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group-row">
+            <div class="form-group">
+              <label>Employment Status *</label>
+              <select class="form-control" id="eligibilityEmployment">
+                <option value="Employed (Full-Time)" selected>Employed (Full-Time)</option>
+                <option value="Employed (Part-Time)">Employed (Part-Time)</option>
+                <option value="Self-Employed / Freelancer">Self-Employed / Freelancer</option>
+                <option value="Retired">Retired</option>
+                <option value="Student / Other">Student / Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Employer / Business Name *</label>
+              <input type="text" class="form-control" id="eligibilityEmployer" placeholder="e.g. Acme Corp, Health Services">
+            </div>
+          </div>
+
+          <div class="form-group-row">
+            <div class="form-group">
+              <label>Job Title / Role</label>
+              <input type="text" class="form-control" id="eligibilityJobTitle" placeholder="e.g. Account Manager, Nurse, Analyst">
+            </div>
+            <div class="form-group">
+              <label>Estimated Monthly Take-Home Income *</label>
+              <input type="text" class="form-control" id="eligibilityIncome" placeholder="e.g. $4,000 / month">
+            </div>
+          </div>
+
+          <div class="form-group-row">
+            <div class="form-group">
+              <label>Monthly Rent / Mortgage / Obligations</label>
+              <input type="text" class="form-control" id="eligibilityExpenses" placeholder="e.g. $1,200 / month">
+            </div>
+            <div class="form-group">
+              <label>How Often Can You Pay? *</label>
+              <div class="frequency-grid">
+                <div class="frequency-option selected">
+                  <input type="radio" name="freq" class="frequency-radio" checked>
+                  <span style="font-weight:700;font-size:0.85rem;">Weekly</span>
+                </div>
+                <div class="frequency-option">
+                  <input type="radio" name="freq" class="frequency-radio">
+                  <span style="font-weight:700;font-size:0.85rem;">Fortnightly</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="step-btn-group">
+            <button class="btn btn-outline-dark btn-sm" id="eligibilityBack2">← Back</button>
+            <button class="btn btn-primary" id="eligibilityNext2">
+              <span>Continue to Travel Details</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 3: Travel Request & Underwriting Submission -->
+        <div class="eligibility-step" id="eligibilityStep3">
+          <div class="step-heading">3. Travel Route & Layaway Request</div>
+          <div class="step-desc">Configure the destination and payment timeframe for underwriting review.</div>
+
+          <div class="form-group">
+            <label>Dream Destination or Route *</label>
+            <input type="text" class="form-control" id="eligibilityDest" placeholder="e.g. Tokyo, London, Cancún, Paris" value="Tokyo, Japan">
+          </div>
+
+          <div class="form-group-row">
+            <div class="form-group">
+              <label>Planned Departure Month</label>
+              <select class="form-control" id="eligibilityMonth">
+                <option>Within 2 to 3 Months</option>
+                <option selected>Within 3 to 6 Months</option>
+                <option>6 to 12 Months Out</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Preferred Repayment Period</label>
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px;">
+                <span class="slider-active-val" id="weeksDisplayVal" style="font-size:1.1rem;color:var(--primary-thunder);">16 Weeks</span>
+              </div>
+              <input type="range" class="budget-slider" id="weeksSlider" min="6" max="18" step="1" value="16" style="margin-top:6px;">
+            </div>
+          </div>
+
+          <!-- Dynamic Budget Slider -->
+          <div class="form-group">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;">
+              <label>Estimated Total Flight Budget</label>
+              <span class="slider-active-val" id="budgetDisplayVal">$800</span>
+            </div>
+            <div class="range-slider-wrapper">
+              <input type="range" class="budget-slider" id="budgetSlider" min="250" max="3500" step="50" value="800">
+            </div>
+            <div class="slider-val-display">
+              <span>$250 Min</span>
+              <span>$3,500 Max</span>
+            </div>
+          </div>
+
+          <div style="background:var(--palette-ice-blue);border-radius:10px;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;margin-top:16px;">
+            <span style="font-size:0.85rem;color:var(--palette-muted-text);font-weight:600;">Estimated Payment Target:</span>
+            <span style="font-family:var(--font-heading);font-weight:800;color:var(--primary-commitment);font-size:1.15rem;" id="eligibilityWeeklyPreview">$46 / week</span>
+          </div>
+
+          <div style="margin-top:18px;padding:14px;background:#fff8f5;border:1px solid #fed9c7;border-radius:10px;font-size:0.825rem;color:#475569;line-height:1.5;">
+            ℹ️ <strong>Submission Notice:</strong> When you submit, our underwriting team will review your application. <strong>You will shortly receive an email whether you are eligible or not.</strong> If eligible, you will receive an approval letter. If not eligible, you will still receive an email notification—please do not worry, you can always re-apply when your financial situation or credit improves.
+          </div>
+
+          <div class="step-btn-group">
+            <button class="btn btn-outline-dark btn-sm" id="eligibilityBack3">← Back</button>
+            <button class="btn btn-secondary" id="eligibilitySubmitFinal" style="padding:14px 30px;">
+              <span>Submit Eligibility Application</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- SUBMITTED STATUS NOTIFICATION VIEW -->
+        <div id="eligibilitySubmittedState" style="display:none;padding:16px 0;">
+          <div style="text-align:center;margin-bottom:20px;">
+            <div style="width:64px;height:64px;background:#e5edfc;color:var(--primary-commitment);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:2rem;margin-bottom:12px;">
+              ✉️
+            </div>
+            <h3 style="font-family:var(--font-heading);font-size:2rem;font-weight:800;color:var(--primary-thunder);">
+              Application Submitted Successfully!
+            </h3>
+            <div style="display:inline-block;background:#f1f5f9;border-radius:20px;padding:4px 16px;font-family:monospace;font-size:0.9rem;font-weight:800;color:#1156f9;margin-top:6px;">
+              Reference: <span id="submittedRefCode">PLT-APP-839201</span>
+            </div>
+          </div>
+
+          <div style="background:#ffffff;border:1.5px solid var(--palette-border);border-radius:16px;padding:22px;margin-bottom:22px;">
+            <h4 style="font-family:var(--font-heading);font-size:1.1rem;font-weight:800;color:var(--primary-thunder);margin-bottom:10px;">
+              Underwriting Review Protocol
+            </h4>
+            <p style="color:#334155;line-height:1.6;font-size:0.925rem;margin-bottom:12px;">
+              Thank you, <strong id="submittedName">Traveler</strong>. Your full identity, banking, employment, and travel details have been logged with our underwriting review team.
+            </p>
+            <p style="color:#334155;line-height:1.6;font-size:0.925rem;margin-bottom:12px;">
+              You will shortly receive an official email at <strong id="submittedEmail">your email</strong> whether you are eligible or not:
+            </p>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0;">
+              <div style="background:#f0fdf4;border:1.5px solid #bbf7d0;border-radius:12px;padding:14px;">
+                <div style="color:#16a34a;font-weight:800;font-size:0.9rem;">✓ If You Are Eligible:</div>
+                <p style="color:#166534;font-size:0.825rem;margin-top:4px;line-height:1.4;">
+                  You will receive an official pre-approval email containing your approved layaway allowance and instructions to lock in your flight.
+                </p>
+              </div>
+
+              <div style="background:#fef2f2;border:1.5px solid #fecaca;border-radius:12px;padding:14px;">
+                <div style="color:#dc2626;font-weight:800;font-size:0.9rem;">ℹ️ If You Are Not Eligible:</div>
+                <p style="color:#991b1b;font-size:0.825rem;margin-top:4px;line-height:1.4;">
+                  You will still receive a notification email. <strong>Please do not worry</strong>—you can always come back and re-apply when your credit score or financial circumstances increase.
+                </p>
+              </div>
+            </div>
+
+            <div style="background:#f8fafc;border-radius:10px;padding:12px;border:1px solid #e2e8f0;margin-top:14px;display:flex;align-items:center;gap:10px;">
+              <span style="font-size:1.25rem;">📧</span>
+              <div style="font-size:0.85rem;color:#475569;">
+                Underwriting Desk Email: 
+                <a href="mailto:paylatertravelhelp@gmail.com" style="color:var(--primary-commitment);font-weight:800;text-decoration:underline;">paylatertravelhelp@gmail.com</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Download Button -->
+          <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+            <button class="btn btn-primary" onclick="downloadEligibilityForm()" style="padding:12px 24px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              <span>Download Official Application Summary (PDF)</span>
+            </button>
+            <button class="btn btn-outline-dark btn-sm" id="eligibilityRestartBtn">
+              Submit Another Application
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 2: LEAVE UPFRONT TRAVEL COSTS BEHIND
+       ========================================================================== -->
+  <section class="section-padding features-section" id="how-it-works">
+    <div class="container">
+      <div class="features-header">
+        <span class="section-tag">How It Works</span>
+        <h2 class="section-title">Leave upfront travel costs behind</h2>
+        <p class="section-subtitle center-block">
+          Shrink upfront costs, splitting the price of your airline ticket into small slices. 
+          Payment plans that fit with your pay cycle, without blowing your budget.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <!-- Feature 1 -->
+        <div class="feature-card">
+          <div class="feature-card-stamp stamp-cyan">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          </div>
+          <h3>Lock in today's flight prices</h3>
+          <p>
+            Flight prices surge rapidly as departure dates draw closer. Pay a tiny initial deposit today to freeze the fare permanently. 
+            No matter how high the airline hikes the ticket price, your rate will never change.
+          </p>
+          <div class="feature-card-footer">
+            <span class="feature-pill" style="background:#e0f2fe;color:#0369a1;">Price Lock Guaranteed</span>
+          </div>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-card">
+          <div class="feature-card-stamp stamp-orange">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
+          </div>
+          <h3>Flexible payment plans</h3>
+          <p>
+            Choose between up to 18 weekly or fortnightly installments that match when you get paid. 
+            Our transparent schedule gives you full control of your travel budget without credit debt.
+          </p>
+          <div class="feature-card-footer">
+            <span class="feature-pill" style="background:#ffedd5;color:#c2410c;">Up to 18 Weekly Payments</span>
+          </div>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-card">
+          <div class="feature-card-stamp stamp-lime">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          </div>
+          <h3>Pay in full before you fly</h3>
+          <p>
+            Fly with zero debt hanging over your vacation. Within 24 hours of completing your final scheduled payment, 
+            your confirmed airline flight ticket lands in your inbox ready for departure!
+          </p>
+          <div class="feature-card-footer">
+            <span class="feature-pill" style="background:#dcfce7;color:#15803d;">100% Debt-Free Travel</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 3: WHERE TO NEXT? DESTINATION EXPLORER
+       ========================================================================== -->
+  <section class="section-padding destinations-section" id="destinations">
+    <div class="container">
+      <div class="destinations-header-row">
+        <div>
+          <span class="section-tag">Explore The Globe</span>
+          <h2 class="section-title">Where to next?</h2>
+          <p class="section-subtitle">Lock in your dream destination today with tiny weekly payments.</p>
+        </div>
+
+        <!-- Tabs -->
+        <div class="destinations-tabs">
+          <button class="dest-tab active" data-filter="trending">Trending</button>
+          <button class="dest-tab" data-filter="international">International</button>
+          <button class="dest-tab" data-filter="domestic">Domestic</button>
+          <button class="dest-tab" data-filter="tropical">Tropical</button>
+          <button class="dest-tab" data-filter="all">All</button>
+        </div>
+      </div>
+
+      <!-- Destinations Grid -->
+      <div class="destinations-grid">
+        <!-- Tokyo -->
+        <div class="dest-card" data-category="international" data-trending="true">
+          <div class="dest-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=800&q=80" alt="Tokyo, Japan" class="dest-img">
+            <span class="dest-deposit-tag" data-usd-price="45" data-is-deposit="true">$45 deposit</span>
+          </div>
+          <div class="dest-body">
+            <div class="dest-city-row">
+              <span class="dest-city">Tokyo</span>
+              <span style="font-size:0.75rem;font-weight:700;color:var(--primary-commitment);">NRT</span>
+            </div>
+            <span class="dest-country">Japan • Nonstop Flights</span>
+            <div class="dest-pricing-box">
+              <div>
+                <span class="dest-weekly-label">Pay Weekly</span>
+                <div class="dest-weekly-price" data-usd-price="58" data-is-weekly="true">from $58/wk</div>
+              </div>
+              <button class="btn btn-primary btn-sm dest-card-action">Book Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- London -->
+        <div class="dest-card" data-category="international" data-trending="true">
+          <div class="dest-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=800&q=80" alt="London, UK" class="dest-img">
+            <span class="dest-deposit-tag" data-usd-price="39" data-is-deposit="true">$39 deposit</span>
+          </div>
+          <div class="dest-body">
+            <div class="dest-city-row">
+              <span class="dest-city">London</span>
+              <span style="font-size:0.75rem;font-weight:700;color:var(--primary-commitment);">LHR</span>
+            </div>
+            <span class="dest-country">United Kingdom • Direct Options</span>
+            <div class="dest-pricing-box">
+              <div>
+                <span class="dest-weekly-label">Pay Weekly</span>
+                <div class="dest-weekly-price" data-usd-price="49" data-is-weekly="true">from $49/wk</div>
+              </div>
+              <button class="btn btn-primary btn-sm dest-card-action">Book Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cancún -->
+        <div class="dest-card" data-category="tropical" data-trending="true">
+          <div class="dest-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1510097467424-192d713fd8b2?auto=format&fit=crop&w=800&q=80" alt="Cancún, Mexico" class="dest-img">
+            <span class="dest-deposit-tag" data-usd-price="25" data-is-deposit="true">$25 deposit</span>
+          </div>
+          <div class="dest-body">
+            <div class="dest-city-row">
+              <span class="dest-city">Cancún</span>
+              <span style="font-size:0.75rem;font-weight:700;color:var(--primary-commitment);">CUN</span>
+            </div>
+            <span class="dest-country">Mexico • Caribbean Getaway</span>
+            <div class="dest-pricing-box">
+              <div>
+                <span class="dest-weekly-label">Pay Weekly</span>
+                <div class="dest-weekly-price" data-usd-price="32" data-is-weekly="true">from $32/wk</div>
+              </div>
+              <button class="btn btn-primary btn-sm dest-card-action">Book Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- New York -->
+        <div class="dest-card" data-category="domestic" data-trending="true">
+          <div class="dest-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=800&q=80" alt="New York, USA" class="dest-img">
+            <span class="dest-deposit-tag" data-usd-price="25" data-is-deposit="true">$25 deposit</span>
+          </div>
+          <div class="dest-body">
+            <div class="dest-city-row">
+              <span class="dest-city">New York</span>
+              <span style="font-size:0.75rem;font-weight:700;color:var(--primary-commitment);">JFK</span>
+            </div>
+            <span class="dest-country">USA • Daily Departures</span>
+            <div class="dest-pricing-box">
+              <div>
+                <span class="dest-weekly-label">Pay Weekly</span>
+                <div class="dest-weekly-price" data-usd-price="24" data-is-weekly="true">from $24/wk</div>
+              </div>
+              <button class="btn btn-primary btn-sm dest-card-action">Book Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bali -->
+        <div class="dest-card" data-category="tropical" data-trending="false">
+          <div class="dest-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=800&q=80" alt="Bali, Indonesia" class="dest-img">
+            <span class="dest-deposit-tag" data-usd-price="42" data-is-deposit="true">$42 deposit</span>
+          </div>
+          <div class="dest-body">
+            <div class="dest-city-row">
+              <span class="dest-city">Bali (Denpasar)</span>
+              <span style="font-size:0.75rem;font-weight:700;color:var(--primary-commitment);">DPS</span>
+            </div>
+            <span class="dest-country">Indonesia • Island Paradise</span>
+            <div class="dest-pricing-box">
+              <div>
+                <span class="dest-weekly-label">Pay Weekly</span>
+                <div class="dest-weekly-price" data-usd-price="46" data-is-weekly="true">from $46/wk</div>
+              </div>
+              <button class="btn btn-primary btn-sm dest-card-action">Book Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Paris -->
+        <div class="dest-card" data-category="international" data-trending="false">
+          <div class="dest-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=800&q=80" alt="Paris, France" class="dest-img">
+            <span class="dest-deposit-tag" data-usd-price="40" data-is-deposit="true">$40 deposit</span>
+          </div>
+          <div class="dest-body">
+            <div class="dest-city-row">
+              <span class="dest-city">Paris</span>
+              <span style="font-size:0.75rem;font-weight:700;color:var(--primary-commitment);">CDG</span>
+            </div>
+            <span class="dest-country">France • Culture & Romance</span>
+            <div class="dest-pricing-box">
+              <div>
+                <span class="dest-weekly-label">Pay Weekly</span>
+                <div class="dest-weekly-price" data-usd-price="54" data-is-weekly="true">from $54/wk</div>
+              </div>
+              <button class="btn btn-primary btn-sm dest-card-action">Book Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Honolulu -->
+        <div class="dest-card" data-category="tropical" data-trending="false">
+          <div class="dest-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Honolulu, Hawaii" class="dest-img">
+            <span class="dest-deposit-tag" data-usd-price="35" data-is-deposit="true">$35 deposit</span>
+          </div>
+          <div class="dest-body">
+            <div class="dest-city-row">
+              <span class="dest-city">Honolulu</span>
+              <span style="font-size:0.75rem;font-weight:700;color:var(--primary-commitment);">HNL</span>
+            </div>
+            <span class="dest-country">Hawaii, USA • Tropical Bliss</span>
+            <div class="dest-pricing-box">
+              <div>
+                <span class="dest-weekly-label">Pay Weekly</span>
+                <div class="dest-weekly-price" data-usd-price="38" data-is-weekly="true">from $38/wk</div>
+              </div>
+              <button class="btn btn-primary btn-sm dest-card-action">Book Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sydney -->
+        <div class="dest-card" data-category="international" data-trending="false">
+          <div class="dest-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&w=800&q=80" alt="Sydney, Australia" class="dest-img">
+            <span class="dest-deposit-tag" data-usd-price="50" data-is-deposit="true">$50 deposit</span>
+          </div>
+          <div class="dest-body">
+            <div class="dest-city-row">
+              <span class="dest-city">Sydney</span>
+              <span style="font-size:0.75rem;font-weight:700;color:var(--primary-commitment);">SYD</span>
+            </div>
+            <span class="dest-country">Australia • Harbour City</span>
+            <div class="dest-pricing-box">
+              <div>
+                <span class="dest-weekly-label">Pay Weekly</span>
+                <div class="dest-weekly-price" data-usd-price="62" data-is-weekly="true">from $62/wk</div>
+              </div>
+              <button class="btn btn-primary btn-sm dest-card-action">Book Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 4: WHY BOOK EARLY WITH PAY LATER TRAVEL?
+       ========================================================================== -->
+  <section class="section-padding why-section">
+    <div class="container">
+      <div class="why-header">
+        <span class="section-tag">Smart Travel Savings</span>
+        <h2 class="section-title">Why book early with Paylater Travel?</h2>
+        <p class="section-subtitle center-block">
+          Travel smart without draining your bank account or paying exorbitant airline last-minute prices.
+        </p>
+      </div>
+
+      <div class="why-grid">
+        <div class="why-card why-card-1">
+          <img src="assets/money.svg" alt="Money Savings Stamp" class="why-card-stamp">
+          <h3>Avoid flight price increases</h3>
+          <p>
+            Flight prices tend to rise significantly as the travel date gets closer. Avoid those steep price hikes and lock in the cheapest possible rate today.
+          </p>
+        </div>
+
+        <div class="why-card why-card-2">
+          <img src="assets/takeoff.svg" alt="Pay As You Save Stamp" class="why-card-stamp">
+          <h3>Pay as you save</h3>
+          <p>
+            Create a payment plan that works seamlessly with your pay cycle, without forking out your hard-earned funds for the full upfront ticket cost.
+          </p>
+        </div>
+
+        <div class="why-card why-card-3">
+          <img src="assets/globe.svg" alt="Stress Less Stamp" class="why-card-stamp">
+          <h3>Stress less</h3>
+          <p>
+            Own your vacation before you take off, and make wonderful lifelong memories knowing you won't be coming home to high-interest credit card debt.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 5: COMPARISON MATRIX: LAYAWAY VS BNPL VS CREDIT CARDS
+       ========================================================================== -->
+  <section class="section-padding comparison-section" id="comparison">
+    <div class="container">
+      <div class="text-center" style="max-width:700px;margin:0 auto 30px;">
+        <span class="section-tag">Transparent Comparison</span>
+        <h2 class="section-title">How Pay Later Travel Compares</h2>
+        <p class="section-subtitle center-block">
+          We use a genuine layaway saving model. See how it stacks up against BNPL loans and expensive credit cards.
+        </p>
+      </div>
+
+      <div class="comparison-table-wrapper">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th class="col-highlight">Pay Later Travel</th>
+              <th>BNPL (Afterpay / Klarna)</th>
+              <th>Credit Cards</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Interest Rate (APR)</strong></td>
+              <td class="col-highlight"><strong>0% Always</strong></td>
+              <td>0% upfront (Late fees apply)</td>
+              <td>19.99% - 29.99% Compound</td>
+            </tr>
+            <tr>
+              <td><strong>Credit Score Check</strong></td>
+              <td class="col-highlight"><span class="feature-badge-yes">✔ No Credit Check</span></td>
+              <td>Soft or Hard Inquiries</td>
+              <td><span class="feature-badge-no">✖ Hard Credit Check</span></td>
+            </tr>
+            <tr>
+              <td><strong>Payment Duration</strong></td>
+              <td class="col-highlight"><strong>Up to 18 Weekly Payments</strong></td>
+              <td>Only 4 Fortnights (6 Weeks)</td>
+              <td>Indefinite Revolving Debt</td>
+            </tr>
+            <tr>
+              <td><strong>Risk of Debt Hangover</strong></td>
+              <td class="col-highlight"><span class="feature-badge-yes">✔ 0% Debt (Paid before flight)</span></td>
+              <td>Risk of Debt Collections</td>
+              <td><span class="feature-badge-no">✖ High Debt Accumulation</span></td>
+            </tr>
+            <tr>
+              <td><strong>Price Lock Protection</strong></td>
+              <td class="col-highlight"><span class="feature-badge-yes">✔ Locked In Instantly</span></td>
+              <td>Varies by Merchant</td>
+              <td>No Price Protection</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 6: TESTIMONIALS: "TRUSTED FOR 250,000+ FLIGHTS"
+       ========================================================================== -->
+  <section class="section-padding testimonials-section" id="testimonials">
+    <div class="container">
+      <div class="testimonials-header">
+        <span class="section-tag">250,000+ Happy Travelers</span>
+        <h2 class="section-title">Trusted for 250,000+ flights</h2>
+        <p class="section-subtitle center-block">
+          Hear directly from travelers who unlocked their dream destinations without upfront stress.
+        </p>
+      </div>
+
+      <div class="testimonials-grid">
+        <!-- Review 1 -->
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <div class="testimonial-quote">
+            "Paylater has helped me be able to travel when at times I couldn't. I've visited my family at Christmas and then again on spring break. The payment plan was clear and easy to follow. This was an amazing trip. Thank you!"
+          </div>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Sarah M." class="author-avatar">
+            <div>
+              <div class="author-name">Sarah Jenkins</div>
+              <div class="author-route">Trip to Miami • Family Visit</div>
+            </div>
+            <span class="verified-pill">✔ Verified</span>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <div class="testimonial-quote">
+            "I used Pay Later to book a flight to New York and had a really smooth experience. The payment plan was clear, reasonable, and easy to follow, which made budgeting a lot less stressful. Everything was straightforward from start to finish with no hidden surprises."
+          </div>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Marcus T." class="author-avatar">
+            <div>
+              <div class="author-name">Marcus Thompson</div>
+              <div class="author-route">Trip to New York • Solo Travel</div>
+            </div>
+            <span class="verified-pill">✔ Verified</span>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <div class="testimonial-quote">
+            "The best affordable payment plan ever! I love the fact that I can pay off fortnightly over months rather than having to try and squeeze into just 4 fortnights like Afterpay. My first solo trip to Japan was unforgettable. Pay Later is my go-to for travel!"
+          </div>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80" alt="Aisha R." class="author-avatar">
+            <div>
+              <div class="author-name">Aisha Patel</div>
+              <div class="author-route">Trip to Tokyo • Vacation</div>
+            </div>
+            <span class="verified-pill">✔ Verified</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 7: DEPOSIT PROMO CTA BANNER
+       ========================================================================== -->
+  <section class="deposit-cta-section">
+    <div class="container cta-banner-content">
+      <div class="cta-banner-text">
+        <h2>Deposit on select flights*</h2>
+        <p>Book early, pay weekly. Lock in today's best flight fares with minimal upfront commitment.</p>
+        <div class="cta-fineprint">*Under $2k per booking. Terms apply. 0% Interest always.</div>
+      </div>
+      <div class="cta-banner-actions">
+        <a href="#eligibility-checker" class="btn btn-primary btn-pill">
+          <span>Check Eligibility (60s)</span>
+        </a>
+        <a href="#book" class="btn btn-outline btn-pill">
+          <span>Search Flights & Plans</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 8: FAQS ACCORDION
+       ========================================================================== -->
+  <section class="section-padding faqs-section" id="faqs">
+    <div class="container">
+      <div class="faqs-header">
+        <span class="section-tag">Got Questions?</span>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-subtitle center-block">
+          Everything you need to know about locking in your flights with 0% interest layaway.
+        </p>
+      </div>
+
+      <!-- Live Search Filter for FAQs -->
+      <div class="faqs-search-wrapper">
+        <svg class="faqs-search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" class="faqs-search-input" id="faqSearchInput" placeholder="Type to filter FAQs (e.g. credit check, tickets, deposit)...">
+      </div>
+
+      <div class="faqs-list">
+        <!-- FAQ 1 -->
+        <div class="faq-item open">
+          <button class="faq-trigger">
+            <span>Do I need a credit check?</span>
+            <span class="faq-icon">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              No, credit checks aren’t needed to book a flight with Paylater Travel. This is because we aren't providing you with credit or a loan. 
+              Your seat is secured with a small deposit and the remainder is paid off in installments before you fly. 
+              No interest. No credit checks. No debt.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="faq-item">
+          <button class="faq-trigger">
+            <span>When will I receive my flight ticket?</span>
+            <span class="faq-icon">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              As soon as you’ve paid your deposit via the Paylater Travel platform, we purchase your ticket on your behalf. 
+              This means your seat is secure and today’s price has been locked in. 
+              You will then receive your flight itinerary (essentially, your pre-departure e-ticket) via email within 24 hours of completing your final payment – easy!
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-item">
+          <button class="faq-trigger">
+            <span>Am I going into debt using Paylater Travel?</span>
+            <span class="faq-icon">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Absolutely not! Paylater Travel is a travel saving tool that helps you budget for your trip. We clearly outline all costs upfront and offer flexible payment plans that work with your budget. 
+              There are no credit checks required, no hidden fees or compounding interest charges that could lead to debt. Plus, your flight ticket is only issued once you’ve paid in full.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="faq-item">
+          <button class="faq-trigger">
+            <span>Can I pay for my flights in installments?</span>
+            <span class="faq-icon">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Yes! Using Paylater Travel lets you split the upfront cost of your flight into smaller, more manageable payments. 
+              After booking your flight with a small deposit, you can pay off the rest in up to 18 weekly installments.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="faq-item">
+          <button class="faq-trigger">
+            <span>How is Paylater Travel different to saving up in the bank?</span>
+            <span class="faq-icon">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Paylater Travel lets you lock in the current flight price with a small deposit, without needing to pay in full up front. 
+              This can help you avoid price increases. For example, a flight might cost you $300 now, but it could go up to $400 or more a few weeks later. 
+              This often means prices go up faster than you can save. Secure your seat now and make regular payments while you save.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 6 -->
+        <div class="faq-item">
+          <button class="faq-trigger">
+            <span>How is Paylater Travel different to booking flights with Afterpay?</span>
+            <span class="faq-icon">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Paylater Travel uses a layaway model instead of a credit model. Credit models charge customers interest on late payments. 
+              Using the Paylater Travel platform means no interest, no credit checks, no hidden fees and no compounding interest charges that could lead to debt. 
+              Plus, we offer more flexibility: our customers can choose to pay in up to 18 weekly installments instead of being locked into just 4 payments.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 7 -->
+        <div class="faq-item">
+          <button class="faq-trigger">
+            <span>How can I choose my seat and add extra baggage?</span>
+            <span class="faq-icon">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Seat selection and luggage options are typically managed directly through the airline's website. Once you’ve paid in full and received your official flight itinerary from Paylater Travel, 
+              you’ll be able to directly contact the airline using your Airline PNR code and choose your seat or add extra luggage (if it wasn’t already included in the fare).
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 9: FOOTER
+       ========================================================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        <!-- Col 1: Brand & Support -->
+        <div class="footer-brand">
+          <img src="assets/logo_inline.svg" alt="Pay Later Travel" style="height:36px;filter:brightness(0) invert(1);">
+          <p>
+            The world's easiest way to book early and pay flexibly. 
+            Lock in today's best airfare prices and spread payments over up to 18 weeks. 0% interest. Zero credit checks.
+          </p>
+          <div class="footer-iata-badge">
+            <img src="assets/iata.avif" alt="IATA Accredited" style="height:24px;width:auto;" onerror="this.style.display='none'">
+            <span>IATA Accredited Travel Agent</span>
+          </div>
+        </div>
+
+        <!-- Col 2: Pay Later Travel -->
+        <div class="footer-col">
+          <h5>Company</h5>
+          <ul class="footer-links-list">
+            <li><a href="#how-it-works" class="footer-link">About Us</a></li>
+            <li><a href="#how-it-works" class="footer-link">How It Works</a></li>
+            <li><a href="#testimonials" class="footer-link">Testimonials</a></li>
+            <li><a href="#comparison" class="footer-link">vs BNPL & Credit</a></li>
+            <li><a href="#faqs" class="footer-link">Careers</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Book -->
+        <div class="footer-col">
+          <h5>Explore</h5>
+          <ul class="footer-links-list">
+            <li><a href="#book" class="footer-link">Search Flights</a></li>
+            <li><a href="#destinations" class="footer-link">Destinations</a></li>
+            <li><a href="#eligibility-checker" class="footer-link">Eligibility Checker</a></li>
+            <li><a href="#book" class="footer-link">Special Offers</a></li>
+            <li><a href="#book" class="footer-link">Refer a Friend</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Support -->
+        <div class="footer-col">
+          <h5>Support</h5>
+          <ul class="footer-links-list">
+            <li><a href="#faqs" class="footer-link">FAQs</a></li>
+            <li><a href="mailto:support@paylatertravel.com" class="footer-link">Contact Support</a></li>
+            <li><a href="#" class="footer-link" onclick="document.getElementById('chatTriggerBtn').click();return false;">Live Chat</a></li>
+            <li><a href="#faqs" class="footer-link">Manage Booking</a></li>
+            <li><a href="#faqs" class="footer-link">Cookie Settings</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 5: Contact Info -->
+        <div class="footer-col">
+          <h5>Need Help?</h5>
+          <p style="font-size:0.88rem;color:rgba(255,255,255,0.8);margin-bottom:12px;">
+            Underwriting & Support Team email:
+          </p>
+          <a href="mailto:paylatertravelhelp@gmail.com" style="color:var(--primary-choice);font-weight:700;font-size:0.95rem;display:block;margin-bottom:16px;">
+            paylatertravelhelp@gmail.com
+          </a>
+          <div style="display:flex;gap:14px;">
+            <a href="https://instagram.com" target="_blank" style="color:#ffffff;" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="https://facebook.com" target="_blank" style="color:#ffffff;" aria-label="Facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            </a>
+            <a href="https://tiktok.com" target="_blank" style="color:#ffffff;" aria-label="TikTok">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom-bar">
+        <div>© 2026 Paylater Travel. All rights reserved. • Underwriting: <a href="mailto:paylatertravelhelp@gmail.com" style="color:#ffffff;text-decoration:underline;">paylatertravelhelp@gmail.com</a></div>
+        <div class="footer-legal-links">
+          <a href="#" id="openAdminDrawerLink" style="color:rgba(255,255,255,0.45);text-decoration:underline;">Admin Inquiries (CSV Export)</a>
+          <a href="#terms" onclick="showToast('Pay Later Travel Terms & Conditions');return false;">Terms and Conditions</a>
+          <a href="#privacy" onclick="showToast('Pay Later Travel Privacy Policy');return false;">Privacy Policy</a>
+          <a href="#layaway" onclick="showToast('Layaway Protection Guarantee');return false;">Layaway Terms</a>
+        </div>
+      </div>
+        <div class="footer-legal-links">
+          <a href="#terms" onclick="showToast('Pay Later Travel Terms & Conditions');return false;">Terms and Conditions</a>
+          <a href="#privacy" onclick="showToast('Pay Later Travel Privacy Policy');return false;">Privacy Policy</a>
+          <a href="#layaway" onclick="showToast('Layaway Protection Guarantee');return false;">Layaway Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       MODAL: FLIGHT SEARCH RESULTS
+       ========================================================================== -->
+  <div class="modal-overlay" id="flightResultsModal">
+    <div class="modal-box">
+      <button class="modal-close-btn" id="closeResultsModal">&times;</button>
+      <div style="margin-bottom:20px;">
+        <span class="section-tag">Available Flights</span>
+        <h3 style="font-family:var(--font-heading);font-size:1.85rem;font-weight:800;color:var(--primary-thunder);" id="modalRouteTitle">
+          Los Angeles ➔ Tokyo
+        </h3>
+        <p style="color:var(--palette-muted-text);font-size:0.95rem;">
+          All flights eligible for 0% interest, no credit check layaway payment plans.
+        </p>
+      </div>
+
+      <!-- Dynamic Flight Results List -->
+      <div id="modalFlightList"></div>
+
+      <div style="background:#f8fafc;padding:14px;border-radius:10px;text-align:center;font-size:0.85rem;color:#64748b;margin-top:20px;">
+        🔒 All seats held immediately upon small deposit. Airline ticket issued prior to departure.
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       INTERACTIVE LIVE SUPPORT CHAT DRAWER
+       ========================================================================== -->
+  <div class="chat-drawer">
+    <div class="chat-window" id="chatWindow">
+      <div class="chat-header">
+        <div style="width:10px;height:10px;border-radius:50%;background:#10b981;"></div>
+        <div style="flex-grow:1;">
+          <div style="font-weight:700;font-size:0.95rem;">Sarah from Pay Later Travel</div>
+          <div style="font-size:0.75rem;opacity:0.85;">Online • Ready to help</div>
+        </div>
+        <button id="chatCloseBtn" style="color:#ffffff;font-size:1.3rem;">&times;</button>
+      </div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="chat-bubble agent">
+          Hi there! 👋 Looking to book flights with a small deposit and flexible weekly payments? Ask me anything about our 0% interest layaway plans or eligibility!
+        </div>
+      </div>
+      <div class="chat-input-bar">
+        <input type="text" id="chatInput" placeholder="Ask a question...">
+        <button class="btn btn-primary btn-sm" id="chatSendBtn" style="padding:6px 12px;">Send</button>
+      </div>
+    </div>
+
+    <!-- Trigger Float Button -->
+    <button class="chat-trigger-btn" id="chatTriggerBtn" aria-label="Open support chat">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+    </button>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/app.js"></script>
+  <script>
+    function openLoginPrompt() {
+      const email = prompt("Enter your email address to log in to your Pay Later Travel booking dashboard:");
+      if (email && email.includes('@')) {
+        showToast("Login link sent to " + email + "! Check your inbox to manage your flights.");
+      } else if (email) {
+        showToast("Please enter a valid email address.");
+      }
+    }
+  </script>
+</body>
+</html>
