@@ -921,21 +921,43 @@ function initMobileNav() {
   const mobileDrawer = document.getElementById('mobileNavDrawer');
   const closeMobile = document.getElementById('closeMobileNav');
 
-  if (hamburger && mobileDrawer) {
-    hamburger.addEventListener('click', () => {
+  function openMenu() {
+    if (mobileDrawer) {
       mobileDrawer.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeMenu() {
+    if (mobileDrawer) {
+      mobileDrawer.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  }
+
+  if (hamburger && mobileDrawer) {
+    hamburger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      openMenu();
     });
 
     if (closeMobile) {
-      closeMobile.addEventListener('click', () => {
-        mobileDrawer.classList.remove('open');
+      closeMobile.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeMenu();
       });
     }
 
-    mobileDrawer.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileDrawer.classList.remove('open');
+    mobileDrawer.querySelectorAll('a, button:not(#closeMobileNav)').forEach(item => {
+      item.addEventListener('click', () => {
+        closeMenu();
       });
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobileDrawer.classList.contains('open')) {
+        closeMenu();
+      }
     });
   }
 }

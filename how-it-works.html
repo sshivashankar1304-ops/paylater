@@ -38,9 +38,40 @@
       </nav>
       <div class="nav-actions">
         <a href="eligibility.html" class="btn btn-secondary btn-sm btn-pill">Check Eligibility</a>
+        <!-- Mobile Hamburger Toggle -->
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Open mobile navigation menu">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
       </div>
     </div>
   </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div id="mobileNavDrawer" class="mobile-nav-drawer">
+    <div class="mobile-nav-header">
+      <img src="assets/logo_inline.svg" alt="Pay Later Travel" style="height:32px;filter:brightness(0) invert(1);">
+      <button id="closeMobileNav" class="mobile-nav-close-btn" aria-label="Close menu">&times;</button>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="index.html#book" class="mobile-nav-link-item">Flights & Search</a>
+      <a href="eligibility.html" class="mobile-nav-link-item">
+        <span>Check Eligibility</span>
+        <span class="nav-badge-pill">60s Review</span>
+      </a>
+      <a href="how-it-works.html" class="mobile-nav-link-item active">How It Works</a>
+      <a href="index.html#destinations" class="mobile-nav-link-item">Popular Destinations</a>
+      <a href="index.html#comparison" class="mobile-nav-link-item">vs BNPL & Credit</a>
+      <a href="index.html#faqs" class="mobile-nav-link-item">FAQs</a>
+    </div>
+    <div class="mobile-nav-footer">
+      <a href="eligibility.html" class="btn btn-secondary btn-pill text-center" style="width:100%;">Check Eligibility Now</a>
+      <div style="text-align:center;font-size:0.8rem;color:rgba(255,255,255,0.6);margin-top:12px;">
+        Underwriting: <a href="mailto:paylatertravelhelp@gmail.com" style="color:var(--palette-glacier);">paylatertravelhelp@gmail.com</a>
+      </div>
+    </div>
+  </div>
 
   <!-- Hero Header -->
   <section class="section-padding" style="background:linear-gradient(135deg, var(--palette-ice-blue) 0%, #ffffff 100%);border-bottom:1px solid var(--palette-border);">
@@ -60,17 +91,17 @@
   <!-- Step-by-Step Breakdown -->
   <section class="section-padding">
     <div class="container">
-      <div style="display:grid;grid-template-columns:1fr;gap:40px;max-width:960px;margin:0 auto;">
+      <div style="display:grid;grid-template-columns:1fr;gap:24px;max-width:960px;margin:0 auto;">
         
         <!-- Step 1 -->
-        <div style="display:grid;grid-template-columns:80px 1fr;gap:24px;background:#ffffff;padding:36px;border-radius:18px;border:1.5px solid var(--palette-border);box-shadow:var(--shadow-sm);">
-          <div style="width:68px;height:68px;border-radius:16px;background:var(--palette-ice-blue);color:var(--primary-commitment);font-family:var(--font-heading);font-size:2rem;font-weight:900;display:flex;align-items:center;justify-content:center;">
+        <div class="how-it-works-step-card" style="background:#ffffff;padding:36px;border-radius:18px;border:1.5px solid var(--palette-border);box-shadow:var(--shadow-sm);">
+          <div style="width:64px;height:64px;border-radius:16px;background:var(--palette-ice-blue);color:var(--primary-commitment);font-family:var(--font-heading);font-size:1.8rem;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
             01
           </div>
           <div>
             <span style="font-size:0.8rem;font-weight:800;color:var(--primary-commitment);text-transform:uppercase;">Step 1: Pick Your Flights</span>
-            <h3 style="font-family:var(--font-heading);font-size:1.6rem;font-weight:800;margin:6px 0 12px;color:var(--primary-thunder);">Choose your route and lock in today's price</h3>
-            <p style="color:#475569;line-height:1.7;">
+            <h3 style="font-family:var(--font-heading);font-size:1.5rem;font-weight:800;margin:6px 0 10px;color:var(--primary-thunder);">Choose your route and lock in today's price</h3>
+            <p style="color:#475569;line-height:1.65;font-size:0.95rem;">
               Search from hundreds of airlines worldwide. Whether heading to Tokyo, London, Paris, or Cancún, lock in the current low rate with an initial deposit as small as $25 to 10%. 
               As departure draws closer, while other travelers face surging last-minute airline prices, your price never increases.
             </p>
@@ -78,14 +109,14 @@
         </div>
 
         <!-- Step 2 -->
-        <div style="display:grid;grid-template-columns:80px 1fr;gap:24px;background:#ffffff;padding:36px;border-radius:18px;border:1.5px solid var(--palette-border);box-shadow:var(--shadow-sm);">
-          <div style="width:68px;height:68px;border-radius:16px;background:#fff1eb;color:var(--primary-choice);font-family:var(--font-heading);font-size:2rem;font-weight:900;display:flex;align-items:center;justify-content:center;">
+        <div class="how-it-works-step-card" style="background:#ffffff;padding:36px;border-radius:18px;border:1.5px solid var(--palette-border);box-shadow:var(--shadow-sm);">
+          <div style="width:64px;height:64px;border-radius:16px;background:#fff1eb;color:var(--primary-choice);font-family:var(--font-heading);font-size:1.8rem;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
             02
           </div>
           <div>
             <span style="font-size:0.8rem;font-weight:800;color:var(--primary-choice);text-transform:uppercase;">Step 2: Custom Installment Plan</span>
-            <h3 style="font-family:var(--font-heading);font-size:1.6rem;font-weight:800;margin:6px 0 12px;color:var(--primary-thunder);">Select up to 18 weekly or fortnightly payments</h3>
-            <p style="color:#475569;line-height:1.7;">
+            <h3 style="font-family:var(--font-heading);font-size:1.5rem;font-weight:800;margin:6px 0 10px;color:var(--primary-thunder);">Select up to 18 weekly or fortnightly payments</h3>
+            <p style="color:#475569;line-height:1.65;font-size:0.95rem;">
               Align payments with your pay schedule. Choose weekly or fortnightly frequency across up to 18 weeks. 
               There are no credit checks required, no hard inquiries on your credit score, and <strong>0% interest</strong>.
             </p>
@@ -93,14 +124,14 @@
         </div>
 
         <!-- Step 3 -->
-        <div style="display:grid;grid-template-columns:80px 1fr;gap:24px;background:#ffffff;padding:36px;border-radius:18px;border:1.5px solid var(--palette-border);box-shadow:var(--shadow-sm);">
-          <div style="width:68px;height:68px;border-radius:16px;background:#f0fdf4;color:#16a34a;font-family:var(--font-heading);font-size:2rem;font-weight:900;display:flex;align-items:center;justify-content:center;">
+        <div class="how-it-works-step-card" style="background:#ffffff;padding:36px;border-radius:18px;border:1.5px solid var(--palette-border);box-shadow:var(--shadow-sm);">
+          <div style="width:64px;height:64px;border-radius:16px;background:#f0fdf4;color:#16a34a;font-family:var(--font-heading);font-size:1.8rem;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
             03
           </div>
           <div>
             <span style="font-size:0.8rem;font-weight:800;color:#16a34a;text-transform:uppercase;">Step 3: We Hold Your Seat</span>
-            <h3 style="font-family:var(--font-heading);font-size:1.6rem;font-weight:800;margin:6px 0 12px;color:var(--primary-thunder);">Your airline ticket is purchased and reserved</h3>
-            <p style="color:#475569;line-height:1.7;">
+            <h3 style="font-family:var(--font-heading);font-size:1.5rem;font-weight:800;margin:6px 0 10px;color:var(--primary-thunder);">Your airline ticket is purchased and reserved</h3>
+            <p style="color:#475569;line-height:1.65;font-size:0.95rem;">
               Upon deposit, Pay Later Travel secures your flight ticket on your behalf with the airline. 
               You can sit back and make automated payments knowing your seat is 100% reserved.
             </p>
@@ -108,14 +139,14 @@
         </div>
 
         <!-- Step 4 -->
-        <div style="display:grid;grid-template-columns:80px 1fr;gap:24px;background:#ffffff;padding:36px;border-radius:18px;border:1.5px solid var(--palette-border);box-shadow:var(--shadow-sm);">
-          <div style="width:68px;height:68px;border-radius:16px;background:var(--palette-glacier);color:var(--primary-thunder);font-family:var(--font-heading);font-size:2rem;font-weight:900;display:flex;align-items:center;justify-content:center;">
+        <div class="how-it-works-step-card" style="background:#ffffff;padding:36px;border-radius:18px;border:1.5px solid var(--palette-border);box-shadow:var(--shadow-sm);">
+          <div style="width:64px;height:64px;border-radius:16px;background:var(--palette-glacier);color:var(--primary-thunder);font-family:var(--font-heading);font-size:1.8rem;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
             04
           </div>
           <div>
             <span style="font-size:0.8rem;font-weight:800;color:var(--primary-thunder);text-transform:uppercase;">Step 4: Pack Your Bags!</span>
-            <h3 style="font-family:var(--font-heading);font-size:1.6rem;font-weight:800;margin:6px 0 12px;color:var(--primary-thunder);">Receive your official e-ticket 24h before departure</h3>
-            <p style="color:#475569;line-height:1.7;">
+            <h3 style="font-family:var(--font-heading);font-size:1.5rem;font-weight:800;margin:6px 0 10px;color:var(--primary-thunder);">Receive your official e-ticket 24h before departure</h3>
+            <p style="color:#475569;line-height:1.65;font-size:0.95rem;">
               Within 24 hours of completing your final installment, your confirmed electronic flight ticket (itinerary) arrives in your email. 
               Take off with complete peace of mind, knowing your trip is completely paid for!
             </p>
