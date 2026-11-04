@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pay Later Travel - Official Payment Receipt</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 18mm 18mm 18mm 18mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #171316;
+      background-color: #ffffff;
+      line-height: 1.5;
+      font-size: 13px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .receipt-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 2.5px solid #1156f9;
+      padding-bottom: 22px;
+      margin-bottom: 26px;
+    }
+
+    .brand-col {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-logo-text {
+      font-size: 26px;
+      font-weight: 900;
+      color: #1156f9;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .brand-logo-text span {
+      color: #ff7433;
+    }
+
+    .company-subtext {
+      font-size: 11.5px;
+      color: #64748b;
+      margin-top: 4px;
+      line-height: 1.4;
+    }
+
+    .receipt-meta-col {
+      text-align: right;
+    }
+
+    .status-badge {
+      display: inline-block;
+      background: #ecfdf5;
+      color: #059669;
+      border: 1px solid #a7f3d0;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-weight: 800;
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+    .ref-number {
+      font-family: "SF Mono", Monaco, Consolas, "Liberation Mono", monospace;
+      font-weight: 800;
+      font-size: 13.5px;
+      color: #171316;
+    }
+
+    .meta-date {
+      font-size: 11.5px;
+      color: #64748b;
+      margin-top: 3px;
+    }
+
+    /* Title */
+    .document-title {
+      font-size: 19px;
+      font-weight: 800;
+      color: #171316;
+      margin-bottom: 22px;
+      letter-spacing: -0.3px;
+    }
+
+    /* Two-column Info Grid */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin-bottom: 26px;
+    }
+
+    .info-block-title {
+      font-size: 10.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: #64748b;
+      margin-bottom: 8px;
+    }
+
+    .info-block-content {
+      font-size: 12.5px;
+      color: #1e293b;
+      line-height: 1.6;
+    }
+
+    .info-block-content strong {
+      font-size: 13.5px;
+      color: #0f172a;
+    }
+
+    .bank-highlight {
+      display: inline-block;
+      background: #e5edfc;
+      color: #1156f9;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 11px;
+    }
+
+    /* Table */
+    .statement-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 22px;
+    }
+
+    .statement-table th {
+      background: #f1f5f9;
+      color: #475569;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 11px 14px;
+      border-top: 1px solid #cbd5e1;
+      border-bottom: 1.5px solid #cbd5e1;
+      text-align: left;
+    }
+
+    .statement-table td {
+      padding: 14px;
+      border-bottom: 1px solid #e2e8f0;
+      font-size: 12.5px;
+      vertical-align: top;
+    }
+
+    .item-title {
+      font-weight: 700;
+      color: #0f172a;
+      font-size: 13px;
+    }
+
+    .item-desc {
+      font-size: 11.5px;
+      color: #64748b;
+      margin-top: 3px;
+    }
+
+    .amount-cell {
+      text-align: right;
+      font-weight: 700;
+      font-size: 13.5px;
+      white-space: nowrap;
+    }
+
+    /* Totals Row */
+    .totals-container {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 26px;
+    }
+
+    .totals-box {
+      width: 320px;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .totals-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 9px 14px;
+      font-size: 12px;
+      border-bottom: 1px solid #f1f5f9;
+      color: #475569;
+    }
+
+    .totals-row.final-total {
+      background: #eff6ff;
+      border-top: 1.5px solid #1156f9;
+      border-bottom: none;
+      padding: 12px 14px;
+      font-size: 14px;
+      font-weight: 800;
+      color: #1156f9;
+    }
+
+    .totals-row.final-total .amount {
+      font-size: 16px;
+      color: #1156f9;
+    }
+
+    /* Verification Box */
+    .policy-box {
+      background: #ffffff;
+      border: 1.5px dashed #cbd5e1;
+      border-radius: 8px;
+      padding: 14px 18px;
+      font-size: 11.5px;
+      color: #475569;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .policy-box strong {
+      color: #0f172a;
+    }
+
+    /* Footer */
+    .receipt-footer {
+      border-top: 1px solid #e2e8f0;
+      padding-top: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 10.5px;
+      color: #94a3b8;
+    }
+
+    .iata-text {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 700;
+      color: #475569;
+    }
+
+    @media print {
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      .no-print {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- Printable Actions (Hidden when printing/PDF) -->
+    <div class="no-print" style="margin-bottom: 24px; display: flex; justify-content: flex-end; gap: 10px;">
+      <button onclick="window.print()" style="background:#1156f9;color:#fff;border:none;padding:10px 22px;border-radius:6px;font-weight:700;font-size:13px;cursor:pointer;">
+        🖨️ Print / Save to PDF
+      </button>
+      <a href="index.html" style="background:#f1f5f9;color:#171316;padding:10px 18px;border-radius:6px;font-weight:700;font-size:13px;text-decoration:none;display:inline-flex;align-items:center;">
+        ← Back to Site
+      </a>
+    </div>
+
+    <!-- Header -->
+    <div class="receipt-header">
+      <div class="brand-col">
+        <div class="brand-logo-text">Pay Later<span>Travel</span></div>
+        <div class="company-subtext">
+          Pay Later Travel Pty Ltd • Global Flight Layaway Solutions<br>
+          Official Website: <strong>www.paylatertravel.com</strong><br>
+          Support Desk: <strong>paylatertravelhelp@gmail.com</strong>
+        </div>
+      </div>
+
+      <div class="receipt-meta-col">
+        <span class="status-badge">✔ Payment Confirmed</span>
+        <div class="ref-number">PLT-TXN-20261104-15457</div>
+        <div class="meta-date">Date of Operation: <strong>04/11/2026 at 09:23 GMT</strong></div>
+        <div class="meta-date">Transaction ID: <strong>TRANSFER-2473009189</strong></div>
+      </div>
+    </div>
+
+    <!-- Document Title -->
+    <div class="document-title">Official Flight Layaway Payment Receipt</div>
+
+    <!-- Info Grid -->
+    <div class="info-grid">
+      <!-- Traveler / Payer -->
+      <div>
+        <div class="info-block-title">Customer & Account Details</div>
+        <div class="info-block-content">
+          <strong>Maria Inês Cardoso da Silva</strong><br>
+          Urbanização Quinta do Morgadinho N8<br>
+          8125-307 Quarteira<br>
+          Portugal
+        </div>
+      </div>
+
+      <!-- Payment Source Information -->
+      <div>
+        <div class="info-block-title">Payment Method & Settlement Source</div>
+        <div class="info-block-content">
+          Institution: <span class="bank-highlight">Wise Europe SA</span><br>
+          Account (IBAN): <strong>BE84 9059 2713 1259</strong><br>
+          SWIFT / BIC: <strong>TRWIBEB1XXX</strong><br>
+          Payment Type: SEPA Electronic Bank Transfer
+        </div>
+      </div>
+    </div>
+
+    <!-- Transaction Table -->
+    <table class="statement-table">
+      <thead>
+        <tr>
+          <th style="width: 50%;">Transaction Description</th>
+          <th style="width: 25%;">Reference Details</th>
+          <th style="width: 10%;">Currency</th>
+          <th style="width: 15%; text-align: right;">Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="item-title">Flight Layaway Installment — Pay Later Travel</div>
+            <div class="item-desc">
+              Partial payment applied to locked-in airline reservation itinerary.<br>
+              Guaranteed fare freeze • 0% APR interest applied • Seat secured.
+            </div>
+          </td>
+          <td>
+            <div style="font-family: monospace; font-weight: 700; color: #0f172a;">TRANSFER-2473009189</div>
+            <div style="font-size: 11px; color: #64748b; margin-top: 2px;">Operation Date: 04/11/2026 09:23</div>
+          </td>
+          <td style="font-weight: 700;">EUR</td>
+          <td class="amount-cell">154,57 €</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Totals Box -->
+    <div class="totals-container">
+      <div class="totals-box">
+        <div class="totals-row">
+          <span>Installment Subtotal</span>
+          <span style="font-weight: 700;">154,57 €</span>
+        </div>
+        <div class="totals-row">
+          <span>Financing Fee / Interest (0% APR)</span>
+          <span style="font-weight: 700; color: #059669;">0,00 €</span>
+        </div>
+        <div class="totals-row">
+          <span>Processing Surcharge</span>
+          <span style="font-weight: 700; color: #059669;">0,00 €</span>
+        </div>
+        <div class="totals-row final-total">
+          <span>Total Processed Amount</span>
+          <span class="amount">154,57 €</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Policies & Underwriting Notes -->
+    <div class="policy-box">
+      <strong>Pay Later Travel Layaway Protection & Policy Summary:</strong><br>
+      • This official transaction confirmation certifies that <strong>154,57 €</strong> was successfully received and credited to the travel account of <strong>Maria Inês Cardoso da Silva</strong> on <strong>04/11/2026 at 09:23</strong>.<br>
+      • Your airline seat reservation remains secure and today's airfare has been permanently locked in.<br>
+      • Confirmed airline e-ticket and final boarding pass credentials will be transmitted via email within 24 hours of completing the final payment cycle.<br>
+      • For inquiries regarding this receipt, contact the billing desk: <strong>paylatertravelhelp@gmail.com</strong>.
+    </div>
+
+    <!-- Footer -->
+    <div class="receipt-footer">
+      <div class="iata-text">
+        <span>✈️ Pay Later Travel</span> • IATA Accredited Travel Partner • Registration No. 0713629988
+      </div>
+      <div>
+        Generated on 04 November 2026 • Page 1 of 1
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
